@@ -1,4 +1,4 @@
-package agreement.server_api.protocol.common;
+package agreement.server_api.protocol.common.Login;
 
 import agreement.server_api.protocol.Command;
 import agreement.server_api.protocol.Packet;
@@ -15,6 +15,13 @@ public class LoginRequest  extends Packet{
     private String userId;        // 用户ID
 
     private String userPassword;  // 用户密码
+
+    public LoginRequest(String userId, String userPassword) {
+        super();
+        this.userId=userId;
+        this.userPassword=userPassword;
+    }
+
     @Override
     public Byte getCommand() {
         return Command.loginRequest;

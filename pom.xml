@@ -12,7 +12,7 @@
     <modules>
         <module>chat-UI</module>
         <module>chat-client-01</module>
-        <module>chat-server-agreement</module>
+        <module>chat-server</module>
     </modules>
 
 

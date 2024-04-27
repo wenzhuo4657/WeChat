@@ -20,6 +20,7 @@
 
     <dependencies>
 
+
         <dependency>
             <groupId>aggreement.server_api</groupId>
             <artifactId>chat-server-agreement</artifactId>

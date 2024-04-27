@@ -11,4 +11,5 @@ public interface Command {
     Byte Demo03 = 3;
 
     Byte loginRequest =5 ;
+    Byte loginResponse = 6;
 }

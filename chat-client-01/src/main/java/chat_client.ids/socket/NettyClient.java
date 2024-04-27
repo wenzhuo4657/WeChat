@@ -1,6 +1,8 @@
 package chat_client.ids.socket;
 
 
+import chat_client.ids.Enum.CommonField;
+import chat_client.ids.infrastructure.util.BeanUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 
@@ -45,6 +47,7 @@ public class NettyClient implements Callable<Channel>{
             b.handler(new MyChannelInitializer());
             future = b.connect(inetHost, inetPort).syncUninterruptibly();
             this.channel =future.channel();
+            BeanUtil.addBean(CommonField.channel, channel);//同一个客户端仅仅会执行一次，不会覆盖
         }catch (Exception e){
             log.info("socket client start error", e.getMessage());
         }finally {
