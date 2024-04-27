@@ -1,4 +1,4 @@
-package com.ly.ui.view.login.Ilogin;
+package com.ly.ui.view.login;
 
 public interface ILoginEvent {
     /**

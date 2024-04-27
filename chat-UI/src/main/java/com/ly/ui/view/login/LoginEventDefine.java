@@ -1,9 +1,5 @@
 package com.ly.ui.view.login;
 
-import com.ly.ui.view.login.Ilogin.ILoginEvent;
-import com.ly.ui.view.login.Ilogin.ILoginMethod;
-import com.ly.ui.view.login.InitSupport.LoginInit;
-
 public class LoginEventDefine {
 
     private LoginInit loginInit;

@@ -1,19 +1,16 @@
 package com.ly.ui.view.login;
 
-
-import com.ly.ui.view.login.Ilogin.ILoginEvent;
-import com.ly.ui.view.login.Ilogin.ILoginMethod;
-import com.ly.ui.view.login.InitSupport.LoginInit;
+import com.ly.ui.view.chat.IChatMethod;
 
 public class LoginController extends LoginInit implements ILoginMethod {
 
-
+    private IChatMethod chat;
     private LoginView loginView;
     private LoginEventDefine loginEventDefine;
 
-    public LoginController(ILoginEvent loginEvent) {
+    public LoginController(ILoginEvent loginEvent, IChatMethod chat) {
         super(loginEvent);
-
+        this.chat = chat;
     }
 
     @Override
@@ -31,8 +28,17 @@ public class LoginController extends LoginInit implements ILoginMethod {
         super.show();
     }
 
+    @Override
+    public void doLoginError() {
+        // TODO 登陆失败提示
+    }
 
-
-
+    @Override
+    public void doLoginSuccess() {
+        // 关闭原窗口
+        close();
+        // 打开聊天窗口
+        chat.doShow();
+    }
 
 }

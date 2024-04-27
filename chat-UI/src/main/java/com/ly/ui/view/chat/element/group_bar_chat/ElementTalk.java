@@ -1,6 +1,10 @@
-package com.ly.ui.view.chat.ElementTalk.group_bar_chat;
+package com.ly.ui.view.chat.element.group_bar_chat;
 
+import com.ly.ui.util.DateUtil;
 import com.ly.ui.util.Ids;
+import com.ly.ui.view.chat.data.RemindCount;
+import com.ly.ui.view.chat.data.TalkBoxData;
+import com.ly.ui.view.chat.data.TalkData;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -11,21 +15,24 @@ import javafx.scene.layout.Pane;
 import java.util.Date;
 
 /**
- * @className: ElementTalk
- * @author: wenzhuo4657
- * @date: 2024/4/27 12:47
- * @Version: 1.0
- * @description:
+ * 博  客：http://bugstack.cn
+ * 公众号：bugstack虫洞栈 | 沉淀、分享、成长，让自己和他人都能有所收获！
+ * create by 小傅哥 on @2019
+ * <p>
+ * 对话框元素，好友对话列表框元素
  */
 public class ElementTalk {
-    private Pane pane;       // 对话面板(与好友对话、与群组对话)
 
-    private Label head;      // 头像区域
+    private Pane pane;
+
+    private Label head;
     private Label nikeName;  // 昵称区域
     private Label msgSketch; // 信息简述
     private Label msgData;   // 信息时间
     private Label msgRemind; // 消息提醒
     private Button delete;   // 删除对话框按钮
+
+    private ListView<Pane> infoBoxList; // 初始化填充消息对话框
 
     public ElementTalk(String talkId, Integer talkType, String talkName, String talkHead, String talkSketch, Date talkDate) {
         pane = new Pane();
@@ -101,6 +108,34 @@ public class ElementTalk {
         infoBoxList.getStyleClass().add("infoBoxStyle");
     }
 
+    public Pane pane() {
+        return pane;
+    }
 
+    public ListView<Pane> infoBoxList() {
+        return infoBoxList;
+    }
 
+    public Button delete() {
+        return delete;
+    }
+
+    public void fillMsgSketch(String talkSketch, Date talkDate) {
+        if (null != talkSketch) {
+            if (talkSketch.length() > 30) talkSketch = talkSketch.substring(0, 30);
+            msgSketch.setText(talkSketch);
+        }
+        if (null == talkDate) talkDate = new Date();
+        // 格式化信息
+        String talkSimpleDate = DateUtil.simpleDate(talkDate);
+        msgData.setText(talkSimpleDate);
+    }
+
+    public void clearMsgSketch() {
+        msgSketch.setText("");
+    }
+
+    public Label msgRemind() {
+        return msgRemind;
+    }
 }
