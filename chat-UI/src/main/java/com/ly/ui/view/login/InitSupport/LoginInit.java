@@ -1,6 +1,7 @@
-package com.ly.ui.view.login;
+package com.ly.ui.view.login.InitSupport;
 
 import com.ly.ui.view.UIObject;
+import com.ly.ui.view.login.Ilogin.ILoginEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,7 +25,7 @@ public abstract class LoginInit extends UIObject {
     public TextField userId;          // 用户账户窗口
     public PasswordField userPassword;// 用户密码窗口
 
-    LoginInit(ILoginEvent loginEvent) {
+    protected LoginInit(ILoginEvent loginEvent) {
         this.loginEvent = loginEvent;
         try {
             root = FXMLLoader.load(getClass().getResource(RESOURCE_NAME));
