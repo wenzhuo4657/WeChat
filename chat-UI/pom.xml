@@ -9,21 +9,16 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>Netty-javaFx.project</groupId>
+    <groupId>com.ly.ui</groupId>
     <artifactId>chat-UI</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
-        </dependency>
-    </dependencies>
+
 
     <build>
         <finalName>chat-UI</finalName>

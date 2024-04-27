@@ -11,6 +11,8 @@
     <name>WeChat</name>
     <modules>
         <module>chat-UI</module>
+        <module>chat-client-01</module>
+        <module>chat-server-agreement</module>
     </modules>
 
 
@@ -18,5 +20,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.1</junit.version>
     </properties>
+
 
 </project>
