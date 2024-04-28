@@ -2,8 +2,6 @@ package chat_client.ids.socket;
 
 import agreement.server_api.codec.ObjDecoder;
 import agreement.server_api.codec.ObjEncoder;
-import agreement.server_api.protocol.Packet;
-import chat_client.ids.socket.handler.MyBizHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 

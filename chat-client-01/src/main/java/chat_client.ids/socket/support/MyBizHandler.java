@@ -1,4 +1,4 @@
-package chat_client.ids.socket.handler;
+package chat_client.ids.socket.support;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

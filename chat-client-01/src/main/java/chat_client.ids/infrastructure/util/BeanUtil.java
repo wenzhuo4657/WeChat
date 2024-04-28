@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author: wenzhuo4657
  * @date: 2024/4/27 19:20
  * @Version: 1.0
- * @description:
+ * @description:  大概可以算是工厂模式吧，将对象交给线程安全的集合管理
  */
 public class BeanUtil {
     private static Map<String,Object> cache = new ConcurrentHashMap<>();

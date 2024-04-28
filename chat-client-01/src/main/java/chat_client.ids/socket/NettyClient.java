@@ -5,11 +5,8 @@ import chat_client.ids.Enum.CommonField;
 import chat_client.ids.infrastructure.util.BeanUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
-
 import java.util.Objects;
 import java.util.concurrent.Callable;
-
-
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
@@ -24,10 +21,10 @@ import org.slf4j.LoggerFactory;
      * */
 public class NettyClient implements Callable<Channel>{
 
-    private Logger log =  LoggerFactory.getLogger(NettyClient.class);
+    private final Logger log =  LoggerFactory.getLogger(NettyClient.class);
 
-    private String inetHost = "127.0.0.1";
-    private int inetPort = 7397;
+    private final String inetHost = CommonField.inetHost;
+    private final int inetPort = CommonField.inetPort;
 
     private EventLoopGroup workerGroup = new NioEventLoopGroup();
     private Channel channel;
@@ -49,7 +46,7 @@ public class NettyClient implements Callable<Channel>{
             this.channel =future.channel();
             BeanUtil.addBean(CommonField.channel, channel);//同一个客户端仅仅会执行一次，不会覆盖
         }catch (Exception e){
-            log.info("socket client start error", e.getMessage());
+            log.info("socket client start error{}", e.getMessage());
         }finally {
             if (Objects.isNull(future) &&future.isSuccess()) {
                 log.info("socket client start done. ");

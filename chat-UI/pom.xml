@@ -9,6 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <packaging>jar</packaging>
+
     <groupId>com.ly.ui</groupId>
     <artifactId>chat-UI</artifactId>
     <version>1.0-SNAPSHOT</version>
