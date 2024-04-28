@@ -3,6 +3,7 @@ package chat_server.jds.socket;
 import agreement.server_api.codec.ObjDecoder;
 import agreement.server_api.codec.ObjEncoder;
 import chat_server.jds.application.UserService;
+import chat_server.jds.socket.handler.LoginHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -28,6 +29,7 @@ public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
         pip.addLast(new ObjEncoder());
 
         //业务处理
+        pip.addLast(new LoginHandler(userService));
 
 
 

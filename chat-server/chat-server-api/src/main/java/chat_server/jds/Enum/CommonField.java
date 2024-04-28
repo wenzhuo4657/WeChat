@@ -1,6 +1,10 @@
 package chat_server.jds.Enum;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public enum CommonField{;
 
-    public static int inetPort=7397;
+
+    @Value("${netty.port}")
+    public static int inetPort;
 }

@@ -1,4 +1,4 @@
-package chat_server.jds.infrastructure.util;
+package chat_server.jds.infrastructure.common;
 
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
@@ -18,11 +18,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Version: 1.0
  * @description:  ,管理客户端实例等等
  *
- * 注意：
- * 由于addchannel()方法内部实现，我们必须保证userid不会重复
  *
  * 注意：
- * 这里并没有实现功能，仅提供基本方法，并不保存任何状态
+ * 这里并没有实现具体功能，仅提供基本方法，并不保存任何状态
  */
 public class SocketChannnelUtil {
 
@@ -34,7 +32,7 @@ public class SocketChannnelUtil {
     private static Map<String, Channel> userChannel = new ConcurrentHashMap<>();
 
       /**
-         *  des: 客户端登录id管理
+         *  des: 客户端登录userid管理
          * */
     private static Map<String, String> userChannelId = new ConcurrentHashMap<>();
 
@@ -44,7 +42,10 @@ public class SocketChannnelUtil {
     private static Map<String, ChannelGroup> channelGroupMap = new ConcurrentHashMap<>();
 
 
-    public static void addchannel(String userId,Channel channel){
+  /**
+     *  des:添加某个客户端连接并为其绑定用户id
+     * */
+    public static void BindClientAndUser(String userId,Channel channel){
         userChannel.put(userId,channel);//此处我们必须保证userid不会重复
         userChannelId.put(channel.id().toString(),userId);//注意此处channel.id()不会重复
     }

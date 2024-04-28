@@ -8,4 +8,5 @@ package chat_client.ids;
  * @description:
  */
 public class Application {
+
 }

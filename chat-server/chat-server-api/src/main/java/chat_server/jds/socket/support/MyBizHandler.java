@@ -1,7 +1,7 @@
 package chat_server.jds.socket.support;
 
 import chat_server.jds.application.UserService;
-import chat_server.jds.infrastructure.util.SocketChannnelUtil;
+import chat_server.jds.infrastructure.common.SocketChannnelUtil;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

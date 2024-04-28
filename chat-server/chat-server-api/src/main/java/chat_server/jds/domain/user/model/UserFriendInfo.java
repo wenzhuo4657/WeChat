@@ -1,7 +1,7 @@
-package agreement.server_api.protocol.common.Login.dto;
+package chat_server.jds.domain.user.model;
 
 
-public class UserFriendDto {
+public class UserFriendInfo {
 
     private String friendId;    // 好友ID
     private String friendName;  // 好友名称

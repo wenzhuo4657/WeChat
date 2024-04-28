@@ -1,7 +1,7 @@
-package agreement.server_api.protocol.common.Login.dto;
+package chat_server.jds.domain.user.model;
 
 
-public class GroupsDto {
+public class GroupsInfo {
 
     private String groupId;     // 群组ID
     private String groupName;   // 群组名称
@@ -30,4 +30,5 @@ public class GroupsDto {
     public void setGroupHead(String groupHead) {
         this.groupHead = groupHead;
     }
+
 }
