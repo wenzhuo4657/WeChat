@@ -1,5 +1,24 @@
 package chat_client.ids;
 
+import chat_client.ids.application.UIService;
+import chat_client.ids.event.ChatEvent;
+import chat_client.ids.event.LoginEvent;
+import chat_client.ids.socket.NettyClient;
+import com.ly.ui.view.chat.ChatController;
+import com.ly.ui.view.chat.IChatEvent;
+import com.ly.ui.view.chat.IChatMethod;
+import com.ly.ui.view.login.ILoginMethod;
+import com.ly.ui.view.login.LoginController;
+import io.netty.channel.Channel;
+import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+
 /**
  * @className: Application
  * @author: wenzhuo4657
@@ -7,6 +26,49 @@ package chat_client.ids;
  * @Version: 1.0
  * @description:
  */
-public class Application {
+public class Application extends  javafx.application.Application {
+    private Logger log= LoggerFactory.getLogger(Application.class);
+    private static ExecutorService executorService = Executors.newFixedThreadPool(2);
+    private ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        IChatMethod chatMethod =new ChatController(new ChatEvent());
+        ILoginMethod loginMethod=new LoginController(new LoginEvent(),chatMethod);
+        loginMethod.doShow();
+
+
+        UIService uiService=new UIService();
+        uiService.setChat(chatMethod);
+        uiService.setLogin(loginMethod);
+
+        log.info("NettyClient连接服务开始 inetHost：{} inetPort：{}", "127.0.0.1", 7397);
+
+        NettyClient nettyClient = new NettyClient(uiService);
+
+        Future<Channel> future = executorService.submit(nettyClient);
+
+        Channel channel = future.get();
+
+        if (null == channel) {
+            throw new RuntimeException("netty client start error channel is null");
+        }
+
+        while (!nettyClient.isActive()) {
+
+            log.info("NettyClient启动服务 ...");
+
+            Thread.sleep(500);
+
+        }
+
+        log.info("NettyClient连接服务完成 {}", channel.localAddress());
+
+    }
+
+    public static void main(String[] args) {
+
+        launch(args);
+
+    }
 }

@@ -3,6 +3,7 @@ package chat_server.jds.application;
 
 import chat_server.jds.domain.user.model.*;
 import chat_server.jds.infrastructure.po.UserFriend;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @Version: 1.0
  * @description: 用户功能定义
  */
+
 public interface UserService {
 
     /**

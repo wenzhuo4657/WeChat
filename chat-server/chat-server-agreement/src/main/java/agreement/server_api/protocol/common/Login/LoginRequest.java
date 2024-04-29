@@ -22,6 +22,9 @@ public class LoginRequest  extends Packet{
         this.userPassword=userPassword;
     }
 
+    public LoginRequest() {
+    }
+
     @Override
     public Byte getCommand() {
         return Command.loginRequest;

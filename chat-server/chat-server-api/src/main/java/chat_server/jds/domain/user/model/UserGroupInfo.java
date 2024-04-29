@@ -7,6 +7,9 @@ public class UserGroupInfo {
     private String userNickName; //用户昵称
     private String userHead;     //用户头像
 
+    public UserGroupInfo() {
+    }
+
     public String getUserId() {
         return userId;
     }

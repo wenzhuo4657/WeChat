@@ -3,6 +3,7 @@ package chat_server.jds.domain.user.model;
 import java.util.Date;
 
 
+
 public class TalkBoxInfo {
 
     private Integer talkType; // 对话框类型；0好友、1群组

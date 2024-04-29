@@ -1,5 +1,7 @@
 package chat_server.jds.domain.user.repository;
 
+import chat_server.jds.domain.user.model.UserInfo;
+
 /**
  * @className: UserRepository
  * @author: wenzhuo4657
@@ -8,5 +10,7 @@ package chat_server.jds.domain.user.repository;
  * @description:
  */
 public interface IUserRepository {
-    String queryUserPassword(String userId);
+    String selectUserPasswordByUserId(String userId);
+
+    UserInfo selectUserInfo(String userId);
 }

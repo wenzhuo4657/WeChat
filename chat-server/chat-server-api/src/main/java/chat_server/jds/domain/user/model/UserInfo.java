@@ -12,6 +12,9 @@ public class UserInfo {
         this.userHead = userHead;
     }
 
+    public UserInfo() {
+    }
+
     public String getUserId() {
         return userId;
     }

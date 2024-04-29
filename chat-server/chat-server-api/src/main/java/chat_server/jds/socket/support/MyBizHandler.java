@@ -42,6 +42,7 @@ public abstract class MyBizHandler<T> extends SimpleChannelInboundHandler<T> {
         log.error("服务端异常断开", cause.getMessage());
         SocketChannnelUtil.removechannelBychannelId(ctx.channel().id().toString());
         SocketChannnelUtil.removeUserChannelOnAllChannelGroup(ctx.channel());
+        //  wenzhuo TODO 2024/4/29 :log打印失效
 
     }
 

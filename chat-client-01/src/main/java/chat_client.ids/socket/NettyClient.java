@@ -2,6 +2,7 @@ package chat_client.ids.socket;
 
 
 import chat_client.ids.Enum.CommonField;
+import chat_client.ids.application.UIService;
 import chat_client.ids.infrastructure.util.BeanUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -26,9 +27,15 @@ public class NettyClient implements Callable<Channel>{
     private final String inetHost = CommonField.inetHost;
     private final int inetPort = CommonField.inetPort;
 
+
     private EventLoopGroup workerGroup = new NioEventLoopGroup();
     private Channel channel;
 
+    private UIService uiService;
+
+    public NettyClient(UIService uiService) {
+          this.uiService = uiService;
+      }
 
       /**
          *  des: 创建客户端连接
@@ -41,7 +48,7 @@ public class NettyClient implements Callable<Channel>{
             b.group(workerGroup);
             b.channel(NioSocketChannel.class);
             b.option(ChannelOption.AUTO_READ, true);
-            b.handler(new MyChannelInitializer());
+            b.handler(new MyChannelInitializer(uiService));
             future = b.connect(inetHost, inetPort).syncUninterruptibly();
             this.channel =future.channel();
             BeanUtil.addBean(CommonField.channel, channel);//同一个客户端仅仅会执行一次，不会覆盖

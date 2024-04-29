@@ -11,6 +11,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.net.InetSocketAddress;
 
@@ -24,10 +26,13 @@ import java.util.concurrent.Callable;
  * @Version: 1.0
  * @description:
  */
+@Service("nettyServer")
 public class NettyServer implements Callable<Channel> {
     private Logger log= LoggerFactory.getLogger(NettyServer.class);
     private final EventLoopGroup parentGroup=new NioEventLoopGroup(2);
     private final EventLoopGroup workGroup=new NioEventLoopGroup(2);
+
+    @Autowired
     private UserService userService;
 
     private  Channel channel;
@@ -43,7 +48,7 @@ public class NettyServer implements Callable<Channel> {
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG,128)
                     .childHandler(new MyChannelInitializer(userService));
-            future = b.bind(new InetSocketAddress(inetPort)).syncUninterruptibly();//注意此处的阻塞方法，不同于sync;
+            future = b.bind(new InetSocketAddress(8080)).syncUninterruptibly();//注意此处的阻塞方法，不同于sync;
             /**
             * syncUninterruptibly()和sync方法都是用于等待ChannelFuture完成的操作，它们的主要区别在于处理中断的策略：
              * sync():

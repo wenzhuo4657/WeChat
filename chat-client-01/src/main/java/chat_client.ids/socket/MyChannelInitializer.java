@@ -2,6 +2,8 @@ package chat_client.ids.socket;
 
 import agreement.server_api.codec.ObjDecoder;
 import agreement.server_api.codec.ObjEncoder;
+import chat_client.ids.application.UIService;
+import chat_client.ids.socket.handler.LoginHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 
@@ -13,12 +15,17 @@ import io.netty.channel.socket.SocketChannel;
  * @description: channel通道初始化
  */
 public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
+    private UIService uiService;
 
+
+    public MyChannelInitializer(UIService uiService) {
+        this.uiService = uiService;
+    }
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ch.pipeline().addLast(new ObjDecoder())
-                .addLast(new ObjEncoder());
-//                .addLast(new MyBizHandler<Packet>());
+                .addLast(new ObjEncoder())
+                .addLast(new LoginHandler(uiService));
     }
 }

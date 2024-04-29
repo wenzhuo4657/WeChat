@@ -3,6 +3,8 @@ package agreement.server_api.protocol;
 import agreement.server_api.protocol.common.Demo01;
 import agreement.server_api.protocol.common.Demo02;
 import agreement.server_api.protocol.common.Demo03;
+import agreement.server_api.protocol.common.Login.LoginRequest;
+import agreement.server_api.protocol.common.Login.LoginResponse;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,6 +24,9 @@ public abstract class Packet {
         packetType.put(Command.Demo02, Demo02.class);
 
         packetType.put(Command.Demo03, Demo03.class);
+        packetType.put(Command.loginRequest, LoginRequest.class);
+
+        packetType.put(Command.loginResponse, LoginResponse.class);
 
     }
 

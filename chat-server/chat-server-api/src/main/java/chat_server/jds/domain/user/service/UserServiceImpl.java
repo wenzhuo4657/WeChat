@@ -4,6 +4,7 @@ import chat_server.jds.application.UserService;
 import chat_server.jds.domain.user.model.*;
 import chat_server.jds.domain.user.repository.IUserRepository;
 import chat_server.jds.infrastructure.po.UserFriend;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -15,19 +16,21 @@ import java.util.List;
  * @Version: 1.0
  * @description:
  */
+
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Resource
     public IUserRepository userRepository;
     @Override
     public boolean checkAuth(String userId, String userPassword) {
-
-        return false;
+        String authCode=userRepository.selectUserPasswordByUserId(userId);
+        return userPassword.equals(authCode);
     }
 
     @Override
     public UserInfo queryUserInfo(String userId) {
-        return null;
+        return userRepository.selectUserInfo(userId);
     }
 
     @Override
