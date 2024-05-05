@@ -5,6 +5,9 @@ import agreement.server_api.protocol.common.Demo02;
 import agreement.server_api.protocol.common.Demo03;
 import agreement.server_api.protocol.common.Login.LoginRequest;
 import agreement.server_api.protocol.common.Login.LoginResponse;
+import agreement.server_api.protocol.common.friend.AddFriendRequest;
+import agreement.server_api.protocol.common.friend.SearchFriendRequest;
+import agreement.server_api.protocol.common.friend.SearchFriendResponse;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,9 +28,10 @@ public abstract class Packet {
 
         packetType.put(Command.Demo03, Demo03.class);
         packetType.put(Command.loginRequest, LoginRequest.class);
-
+        packetType.put(Command.searchFriendRequest, SearchFriendRequest.class);
+        packetType.put(Command.searchFriendResponse, SearchFriendResponse.class);
         packetType.put(Command.loginResponse, LoginResponse.class);
-
+        packetType.put(Command.addFriendRequest, AddFriendRequest.class);
     }
 
 

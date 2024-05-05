@@ -4,18 +4,22 @@ import agreement.server_api.codec.ObjDecoder;
 import agreement.server_api.codec.ObjEncoder;
 import chat_server.jds.application.UserService;
 import chat_server.jds.socket.handler.LoginHandler;
+import chat_server.jds.socket.handler.SearchFriendHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @className: MyChannelInitializer
  * @author: wenzhuo4657
  * @date: 2024/4/28 14:35
  * @Version: 1.0
- * @description:
+ * @description:  channel通道初始化
  */
 public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
+    private Logger log= LoggerFactory.getLogger(MyChannelInitializer.class);
     private UserService userService;
 
     public MyChannelInitializer(UserService userService) {
@@ -30,8 +34,9 @@ public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
 
         //业务处理
         pip.addLast(new LoginHandler(userService));
+        pip.addLast(new SearchFriendHandler(userService));
 
-
+        log.info("客户端+1");
 
     }
 }

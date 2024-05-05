@@ -1,6 +1,9 @@
 package chat_server.jds.domain.user.model;
 
-
+  /**
+     *  des: 客户端用户发来某个请求需要返回其他用户信息时使用，
+   *  其中字段status表示查询用户和客户端用户之间的关系，且注意，该类在协议包中也有字段相似的类定义
+     * */
 public class LuckUserInfo {
 
     private String userId;       //用户ID

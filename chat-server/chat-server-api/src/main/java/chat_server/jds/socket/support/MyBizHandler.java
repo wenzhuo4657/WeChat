@@ -13,10 +13,10 @@ import org.slf4j.LoggerFactory;
  * @author: wenzhuo4657
  * @date: 2024/4/28 15:52
  * @Version: 1.0
- * @description:
+ * @description: hanndel方法基本实现
  */
 public abstract class MyBizHandler<T> extends SimpleChannelInboundHandler<T> {
-    protected Logger log= LoggerFactory.getLogger(MyBizHandler.class);
+    protected static Logger log= LoggerFactory.getLogger(MyBizHandler.class);
     protected UserService userService;
 
     public MyBizHandler(UserService userService) {
@@ -34,8 +34,11 @@ public abstract class MyBizHandler<T> extends SimpleChannelInboundHandler<T> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         super.channelActive(ctx);
-        log.info("客户端数量+1");
+
     }
+
+
+
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {

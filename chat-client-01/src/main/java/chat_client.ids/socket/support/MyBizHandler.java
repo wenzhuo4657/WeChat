@@ -1,5 +1,6 @@
 package chat_client.ids.socket.support;
 
+import chat_client.ids.application.UIService;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -12,6 +13,13 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @description:
  */
 public abstract class MyBizHandler<T> extends SimpleChannelInboundHandler<T> {
+
+    protected UIService uiService;
+
+    public MyBizHandler(UIService uiService) {
+        this.uiService = uiService;
+    }
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, T msg) throws Exception {
         channelRead(ctx.channel(), msg);

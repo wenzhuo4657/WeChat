@@ -12,4 +12,11 @@ public interface Command {
 
     Byte loginRequest =5 ;//登录请求指令代码
     Byte loginResponse = 6;//登录相应指令代码
+
+    Byte searchFriendRequest = 7;
+    Byte searchFriendResponse = 8;
+    Byte addFriendRequest=9;//客户端后端请求添加好友指令代码
+
+    Byte addFriendResponse = 10;
+
 }
