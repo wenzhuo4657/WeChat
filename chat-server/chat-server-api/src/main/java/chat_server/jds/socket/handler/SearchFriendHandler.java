@@ -37,7 +37,5 @@ public class SearchFriendHandler extends MyBizHandler<SearchFriendRequest>{
         SearchFriendResponse resp=new SearchFriendResponse();
         resp.setList(userDtos);
         channel.writeAndFlush(resp);
-
-
     }
 }

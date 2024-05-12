@@ -4,8 +4,10 @@ import chat_server.jds.domain.user.model.LuckUserInfo;
 import chat_server.jds.domain.user.model.UserInfo;
 import chat_server.jds.domain.user.repository.IUserRepository;
 import chat_server.jds.infrastructure.common.BeancopyUtils;
+import chat_server.jds.infrastructure.dao.ITalkBoxDao;
 import chat_server.jds.infrastructure.dao.IUserDao;
 import chat_server.jds.infrastructure.dao.IUserFriendDao;
+import chat_server.jds.infrastructure.po.TalkBox;
 import chat_server.jds.infrastructure.po.User;
 import chat_server.jds.infrastructure.po.UserFriend;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class UserRepository implements IUserRepository {
 
     @Autowired
     private IUserFriendDao userFriendDao;
+
+    @Autowired
+    private ITalkBoxDao talkBoxDao;
 
     @Override
     public String selectUserPasswordByUserId(String userId) {
@@ -66,8 +71,30 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void addUserFriend(List<UserFriend> userFriendList) {
-
+        try {
             userFriendDao.addUserFriendList(userFriendList);
+        } catch (DuplicateKeyException ignored) {
+        }
 
+    }
+
+    @Override
+    public void deleteUserTalk(String userId, String talkId) {
+        talkBoxDao.deleteUserTalk(userId, talkId);
+    }
+
+    @Override
+    public void addTalkBoxInfo(String userId, String talkId, Integer talkType) {
+        try {
+            if (null != talkBoxDao.queryTalkBox(userId, talkId)) {
+                return;
+            }
+            TalkBox talkBox = new TalkBox();
+            talkBox.setUserId(userId);
+            talkBox.setTalkId(talkId);
+            talkBox.setTalkType(talkType);
+            talkBoxDao.addTalkBox(talkBox);
+        } catch (DuplicateKeyException ignored) {
+        }
     }
 }

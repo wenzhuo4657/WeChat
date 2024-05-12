@@ -22,11 +22,11 @@ import java.util.Objects;
  */
 public class SearchFriendHandler extends MyBizHandler<SearchFriendResponse> {
 
-    private UIService uiService;
 
-    public SearchFriendHandler(UIService uiService, UIService uiService1) {
+
+    public SearchFriendHandler(UIService uiService) {
         super(uiService);
-        this.uiService = uiService1;
+
     }
 
 

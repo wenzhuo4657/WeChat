@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addTalkBoxInfo(String userId, String talkId, Integer talkType) {
-
+        userRepository.addTalkBoxInfo(userId, talkId, talkType);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUserTalk(String userId, String talkId) {
-
+        userRepository.deleteUserTalk(userId, talkId);
     }
 
     @Override

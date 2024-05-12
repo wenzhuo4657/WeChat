@@ -18,5 +18,11 @@ public interface Command {
     Byte addFriendRequest=9;//客户端后端请求添加好友指令代码
 
     Byte addFriendResponse = 10;
+    Byte DelTalkRequest = 11;
+    Byte TalkNoticeRequest = 12;
+    Byte TalkNoticeResponse = 13;
+
+
+
 
 }

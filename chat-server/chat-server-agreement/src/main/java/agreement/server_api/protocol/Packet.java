@@ -6,8 +6,12 @@ import agreement.server_api.protocol.common.Demo03;
 import agreement.server_api.protocol.common.Login.LoginRequest;
 import agreement.server_api.protocol.common.Login.LoginResponse;
 import agreement.server_api.protocol.common.friend.AddFriendRequest;
+import agreement.server_api.protocol.common.friend.AddFriendResponse;
 import agreement.server_api.protocol.common.friend.SearchFriendRequest;
 import agreement.server_api.protocol.common.friend.SearchFriendResponse;
+import agreement.server_api.protocol.common.talk.DelTalkRequest;
+import agreement.server_api.protocol.common.talk.TalkNoticeRequest;
+import agreement.server_api.protocol.common.talk.TalkNoticeResponse;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -32,6 +36,10 @@ public abstract class Packet {
         packetType.put(Command.searchFriendResponse, SearchFriendResponse.class);
         packetType.put(Command.loginResponse, LoginResponse.class);
         packetType.put(Command.addFriendRequest, AddFriendRequest.class);
+        packetType.put(Command.addFriendResponse, AddFriendResponse.class);
+        packetType.put(Command.DelTalkRequest, DelTalkRequest.class);
+        packetType.put(Command.TalkNoticeRequest, TalkNoticeRequest.class);
+        packetType.put(Command.TalkNoticeResponse, TalkNoticeResponse.class);
     }
 
 

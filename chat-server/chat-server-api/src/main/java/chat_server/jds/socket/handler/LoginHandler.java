@@ -3,19 +3,13 @@ package chat_server.jds.socket.handler;
 import agreement.server_api.protocol.common.Login.LoginRequest;
 import agreement.server_api.protocol.common.Login.LoginResponse;
 import chat_server.jds.application.UserService;
-import chat_server.jds.domain.user.model.GroupsInfo;
-import chat_server.jds.domain.user.model.TalkBoxInfo;
-import chat_server.jds.domain.user.model.UserFriendInfo;
 import chat_server.jds.domain.user.model.UserInfo;
 import chat_server.jds.infrastructure.common.SocketChannnelUtil;
 import chat_server.jds.socket.support.MyBizHandler;
 import com.alibaba.fastjson.JSON;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 /**
  * @className: LoginHandler

@@ -2,6 +2,8 @@ package chat_client.ids.event;
 
 import agreement.server_api.protocol.common.friend.AddFriendRequest;
 import agreement.server_api.protocol.common.friend.SearchFriendRequest;
+import agreement.server_api.protocol.common.talk.DelTalkRequest;
+import agreement.server_api.protocol.common.talk.TalkNoticeRequest;
 import chat_client.ids.Enum.CommonField;
 import chat_client.ids.infrastructure.util.BeanUtil;
 import com.ly.ui.view.chat.IChatEvent;
@@ -31,17 +33,22 @@ public class ChatEvent implements IChatEvent {
 
     @Override
     public void doEventAddTalkUser(String userId, String userFriendId) {
+        Channel channel = BeanUtil.getBean("channel", Channel.class);
+        channel.writeAndFlush(new TalkNoticeRequest(userId, userFriendId, 0));
 
     }
 
     @Override
     public void doEventAddTalkGroup(String userId, String groupId) {
+        Channel channel = BeanUtil.getBean("channel", Channel.class);
+        channel.writeAndFlush(new TalkNoticeRequest(userId, groupId, 1));
 
     }
 
     @Override
     public void doEventDelTalkUser(String userId, String talkId) {
-
+        Channel channel = BeanUtil.getBean("channel", Channel.class);
+        channel.writeAndFlush(new DelTalkRequest(userId, talkId));
     }
 
 
@@ -60,7 +67,7 @@ public class ChatEvent implements IChatEvent {
     @Override
     public void doFriendLuckSearch(String userId, String text) {
         Channel channel = BeanUtil.getBean(CommonField.channel, Channel.class);
-        channel.writeAndFlush(new AddFriendRequest(userId,text));
+        channel.writeAndFlush(new SearchFriendRequest(userId, text));
     }
 
       /**

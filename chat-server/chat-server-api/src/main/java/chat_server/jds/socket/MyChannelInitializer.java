@@ -3,8 +3,7 @@ package chat_server.jds.socket;
 import agreement.server_api.codec.ObjDecoder;
 import agreement.server_api.codec.ObjEncoder;
 import chat_server.jds.application.UserService;
-import chat_server.jds.socket.handler.LoginHandler;
-import chat_server.jds.socket.handler.SearchFriendHandler;
+import chat_server.jds.socket.handler.*;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -35,6 +34,9 @@ public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
         //业务处理
         pip.addLast(new LoginHandler(userService));
         pip.addLast(new SearchFriendHandler(userService));
+        pip.addLast(new DelTalkHandler(userService));
+        pip.addLast(new AddFriendHandler(userService));
+        pip.addLast(new TalkNoticeHandler(userService));
 
         log.info("客户端+1");
 

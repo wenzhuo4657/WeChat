@@ -21,4 +21,8 @@ public interface IUserRepository {
     List<LuckUserInfo> queryFuzzyUserInfoList(String userId, String searchKey);
 
     void addUserFriend(List<UserFriend> userFriendList);
+
+    void deleteUserTalk(String userId, String talkId);
+
+    void addTalkBoxInfo(String userId, String talkId, Integer talkType);
 }
