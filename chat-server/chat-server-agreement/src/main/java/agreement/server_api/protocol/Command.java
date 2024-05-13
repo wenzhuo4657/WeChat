@@ -25,4 +25,6 @@ public interface Command {
 
     Byte msgRequest = 14;
     Byte msgResponse=15;
+    Byte msgGroupRequest = 16;
+    Byte msgGroupResponse = 17;
 }

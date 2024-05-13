@@ -73,6 +73,7 @@ public class LoginHandler  extends MyBizHandler<LoginRequest> {
 //                查询info
                 List<ChatRecordInfo> chatRecordInfoList =
                         userService.queryChatRecordInfoList(talkBoxInfo.getTalkId(), msg.getUserId(), Friend.getCode());
+//  wenzhuo TODO 2024/5/13 : 这里全部都加载为自己的消息
 
 //                 info->dto
                 for (ChatRecordInfo chatRecordInfo:chatRecordInfoList){

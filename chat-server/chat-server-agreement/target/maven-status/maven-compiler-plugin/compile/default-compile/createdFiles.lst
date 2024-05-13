@@ -7,6 +7,7 @@ agreement\server_api\protocol\common\Demo03.class
 agreement\server_api\codec\ObjDecoder.class
 agreement\server_api\protocol\common\Login\dto\GroupsDto.class
 agreement\server_api\protocol\common\Demo01.class
+agreement\server_api\protocol\common\msg\MsgGroupResponse.class
 agreement\server_api\protocol\common\msg\MsgRequest.class
 agreement\server_api\protocol\common\Login\dto\ChatTalkDto.class
 agreement\server_api\protocol\common\talk\TalkNoticeRequest.class
@@ -19,6 +20,7 @@ agreement\server_api\protocol\common\Login\LoginResponse.class
 agreement\server_api\Utils\ProtostuffUtil.class
 agreement\server_api\protocol\common\friend\dto\UserDto.class
 agreement\server_api\main.class
+agreement\server_api\protocol\common\msg\MsgGroupRequest.class
 agreement\server_api\protocol\Packet.class
 agreement\server_api\codec\ObjEncoder.class
 agreement\server_api\protocol\common\Demo02.class

@@ -2,6 +2,7 @@ package chat_client.ids.event;
 
 import agreement.server_api.protocol.common.friend.AddFriendRequest;
 import agreement.server_api.protocol.common.friend.SearchFriendRequest;
+import agreement.server_api.protocol.common.msg.MsgGroupRequest;
 import agreement.server_api.protocol.common.msg.MsgRequest;
 import agreement.server_api.protocol.common.talk.DelTalkRequest;
 import agreement.server_api.protocol.common.talk.TalkNoticeRequest;
@@ -33,6 +34,9 @@ public class ChatEvent implements IChatEvent {
         // 好友0
         if (0 == talkType) {
             channel.writeAndFlush(new MsgRequest(userId, talkId, msg, msgType, msgDate));
+        }
+        else if (1 == talkType) {
+            channel.writeAndFlush(new MsgGroupRequest(talkId, userId, msg, msgType, msgDate));
         }
 
 

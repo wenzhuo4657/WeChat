@@ -149,12 +149,12 @@ public class UserRepository implements IUserRepository {
     @Override
     public List<ChatRecordInfo> queryChatRecordInfoList(String talkId, String userId, Integer talkType) {
         List<ChatRecordInfo> chatRecordInfoList = new ArrayList<>();
-        List<ChatRecord> list = new ArrayList<>();
+        List<ChatRecord> list=new ArrayList<>();
 
 //        查询po
         if (Friend.getCode().equals(talkType)){
             list=chatRecordDao.queryUserChatRecordList(talkId,userId);
-        }else {
+        }else  if (Group.getCode().equals(talkType)){
             list =  chatRecordDao.queryGroupsChatRecordList(talkId, userId);
         }
 
