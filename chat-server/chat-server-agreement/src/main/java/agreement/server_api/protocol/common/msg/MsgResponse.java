@@ -2,6 +2,8 @@ package agreement.server_api.protocol.common.msg;
 
 import agreement.server_api.protocol.Command;
 import agreement.server_api.protocol.Packet;
+import org.junit.Test;
+
 import java.util.Date;
 
 public class MsgResponse extends Packet {
@@ -58,4 +60,7 @@ public class MsgResponse extends Packet {
     public void setMsgDate(Date msgDate) {
         this.msgDate = msgDate;
     }
+
+
+
 }

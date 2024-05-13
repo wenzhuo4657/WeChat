@@ -33,7 +33,7 @@ public class MsgHandler extends MyBizHandler<MsgRequest> {
         userService.addTalkBoxInfo(msg.getFriendId(),msg.getUserId(), Constants.TalkType.Friend.getCode());
         Channel friendChannel = SocketChannnelUtil.getChannel(msg.getFriendId());
         if (Objects.isNull(friendChannel)){
-            log.info("用户id:{}未登录!",msg.getFriendId());
+            log.info("好友用户id:{}未登录!",msg.getFriendId());
             return;
         }
         friendChannel.writeAndFlush(new MsgResponse(msg.getUserId(), msg.getMsgText(), msg.getMsgType(), msg.getMsgDate()));

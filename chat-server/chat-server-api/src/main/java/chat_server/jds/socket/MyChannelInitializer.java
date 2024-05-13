@@ -39,6 +39,7 @@ public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
         pip.addLast(new TalkNoticeHandler(userService));
         pip.addLast(new MsgHandler(userService));
         pip.addLast(new MsgGroupHandler(userService));
+        pip.addLast(new ReconnectHandler(userService));
 
         log.info("客户端+1");
 

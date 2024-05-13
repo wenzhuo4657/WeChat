@@ -18,5 +18,8 @@
     <select id="queryTalkBoxList" resultType="chat_server.jds.infrastructure.po.TalkBox">
             select talkId,talkType from talk_box where userId=#{userId}
     </select>
+    <select id="queryTalkBoxGroupsIdList" parameterType="java.lang.String" resultType="java.lang.String">
+        select talkId from talk_box where talkType = 1 and userId = #{userId}
+    </select>
 
 </mapper>

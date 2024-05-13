@@ -36,4 +36,6 @@ public interface IUserRepository {
     List<UserFriendInfo> queryUserFriendInfoList(String userId);
 
     List<String> queryUserGroupsIdList(String userId);
+
+    List<String> queryTalkBoxGroupsIdList(String userId);
 }

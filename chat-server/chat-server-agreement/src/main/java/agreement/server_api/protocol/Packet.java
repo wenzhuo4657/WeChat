@@ -5,6 +5,7 @@ import agreement.server_api.protocol.common.Demo02;
 import agreement.server_api.protocol.common.Demo03;
 import agreement.server_api.protocol.common.Login.LoginRequest;
 import agreement.server_api.protocol.common.Login.LoginResponse;
+import agreement.server_api.protocol.common.Login.ReconnectRequest;
 import agreement.server_api.protocol.common.friend.AddFriendRequest;
 import agreement.server_api.protocol.common.friend.AddFriendResponse;
 import agreement.server_api.protocol.common.friend.SearchFriendRequest;
@@ -48,6 +49,7 @@ public abstract class Packet {
         packetType.put(Command.msgResponse, MsgResponse.class);
         packetType.put(Command.msgGroupRequest, MsgGroupRequest.class);
         packetType.put(Command.msgGroupResponse, MsgGroupResponse.class);
+        packetType.put(Command.reconnectRequest, ReconnectRequest.class);
     }
 
 

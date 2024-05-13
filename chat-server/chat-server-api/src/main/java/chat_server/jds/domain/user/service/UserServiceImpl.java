@@ -96,6 +96,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<String> queryTalkBoxGroupsIdList(String userId) {
-        return null;
+        return userRepository.queryTalkBoxGroupsIdList(userId);
     }
 }

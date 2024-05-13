@@ -1,5 +1,7 @@
 package agreement.server_api.protocol;
 
+import org.junit.Test;
+
 public interface Command {
 
 
@@ -27,4 +29,7 @@ public interface Command {
     Byte msgResponse=15;
     Byte msgGroupRequest = 16;
     Byte msgGroupResponse = 17;
+    Byte reconnectRequest = 18;
+
+
 }

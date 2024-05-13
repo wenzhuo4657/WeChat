@@ -18,4 +18,6 @@ public interface ITalkBoxDao {
     void addTalkBox(TalkBox talkBox);
 
     List<TalkBox> queryTalkBoxList(@Param("userId") String userId);
+
+    List<String> queryTalkBoxGroupsIdList(String userId);
 }
