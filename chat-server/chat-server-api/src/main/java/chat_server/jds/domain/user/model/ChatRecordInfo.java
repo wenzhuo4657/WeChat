@@ -2,6 +2,8 @@ package chat_server.jds.domain.user.model;
 
 
 
+import chat_server.jds.infrastructure.common.Constants;
+
 import java.util.Date;
 
 
@@ -17,14 +19,17 @@ public class ChatRecordInfo {
     public ChatRecordInfo() {
     }
 
-//    public ChatRecordInfo(String userId, String friendId, String msgContent, Integer msgType, Date msgDate) {
-//        this.friendId = friendId;
-//        this.userId = userId;
-//        this.msgContent = msgContent;
-//        this.msgType = msgType;
-//        this.msgDate = msgDate;
-//        this.talkType = Constants.TalkType.Friend.getCode();
-//    }
+    public ChatRecordInfo(String userId, String friendId, String msgContent, Integer msgType, Date msgDate) {
+        this.friendId = friendId;
+        this.userId = userId;
+        this.msgContent = msgContent;
+        this.msgType = msgType;
+        this.msgDate = msgDate;
+        this.talkType = Constants.TalkType.Friend.getCode();
+    }
+
+
+
 
     public ChatRecordInfo(String userId, String friendId, String msgContent, Integer msgType, Date msgDate, Integer talkType) {
         this.friendId = friendId;

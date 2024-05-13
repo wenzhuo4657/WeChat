@@ -17,4 +17,7 @@
         select userFriendId from user_friend
         where userId = #{userId} and userFriendId = #{userFriendId}
     </select>
+    <select id="queryUserFriendIdList" resultType="java.lang.String">
+        SELECT userFriendId FROM user_friend where userId = #{userId}
+    </select>
 </mapper>

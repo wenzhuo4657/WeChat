@@ -4,6 +4,7 @@ import chat_server.jds.application.UserService;
 import chat_server.jds.domain.user.model.*;
 import chat_server.jds.domain.user.repository.IUserRepository;
 import chat_server.jds.infrastructure.po.UserFriend;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +23,9 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     public IUserRepository userRepository;
+
+    @Resource //先根据byname查找，该bean在配置文件中通过xml注入
+    private ThreadPoolTaskExecutor taskExecutor;
     @Override
     public boolean checkAuth(String userId, String userPassword) {
         String authCode=userRepository.selectUserPasswordByUserId(userId);
@@ -35,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<TalkBoxInfo> queryTalkBoxInfoList(String userId) {
-        return null;
+        return userRepository.queryTalkBoxInfoList(userId);
     }
 
     @Override
@@ -45,12 +49,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserFriendInfo> queryUserFriendInfoList(String userId) {
-        return null;
+        return userRepository.queryUserFriendInfoList(userId);
     }
 
     @Override
     public List<GroupsInfo> queryUserGroupInfoList(String userId) {
-        return null;
+        return userRepository.queryUserGroupInfoList(userId);
     }
 
     @Override
@@ -65,12 +69,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void asyncAppendChatRecord(ChatRecordInfo chatRecordInfo) {
-
+        taskExecutor.execute(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        userRepository.appendChatRecord(chatRecordInfo);
+                    }
+                }
+        );
     }
 
     @Override
     public List<ChatRecordInfo> queryChatRecordInfoList(String talkId, String userId, Integer talkType) {
-        return null;
+        return userRepository.queryChatRecordInfoList(talkId, userId, talkType);
     }
 
     @Override
@@ -80,7 +91,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<String> queryUserGroupsIdList(String userId) {
-        return null;
+        return userRepository.queryUserGroupsIdList(userId);
     }
 
     @Override

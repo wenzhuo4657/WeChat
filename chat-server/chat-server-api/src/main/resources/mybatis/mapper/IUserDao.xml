@@ -13,4 +13,7 @@
         order by id desc
             limit 10
     </select>
+    <select id="queryUserById" resultType="chat_server.jds.infrastructure.po.User">
+        select userId, userNickName, userHead from user where userId = #{userId}
+    </select>
 </mapper>

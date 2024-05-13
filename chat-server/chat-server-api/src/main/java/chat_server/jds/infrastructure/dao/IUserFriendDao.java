@@ -13,4 +13,6 @@ public interface IUserFriendDao {
     UserFriend queryUserFrinedById(UserFriend req);
 
     void addUserFriendList(List<UserFriend> userFriendList);
+
+    List<String> queryUserFriendIdList(String userId);
 }

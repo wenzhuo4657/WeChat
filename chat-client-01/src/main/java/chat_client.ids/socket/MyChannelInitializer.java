@@ -7,6 +7,7 @@ import chat_client.ids.socket.handler.AddFriendHandler;
 import chat_client.ids.socket.handler.LoginHandler;
 import chat_client.ids.socket.handler.SearchFriendHandler;
 import chat_client.ids.socket.handler.TalkNoticeHandler;
+import chat_client.ids.socket.handler.MsgHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 
@@ -32,6 +33,7 @@ public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
                 .addLast(new LoginHandler(uiService))
                 .addLast(new TalkNoticeHandler(uiService))
                 .addLast(new AddFriendHandler(uiService))
-                .addLast(new SearchFriendHandler(uiService));
+                .addLast(new SearchFriendHandler(uiService))
+                .addLast(new MsgHandler(uiService));
     }
 }

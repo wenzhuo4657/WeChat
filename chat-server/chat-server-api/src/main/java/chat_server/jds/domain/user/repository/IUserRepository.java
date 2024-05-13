@@ -1,7 +1,6 @@
 package chat_server.jds.domain.user.repository;
 
-import chat_server.jds.domain.user.model.LuckUserInfo;
-import chat_server.jds.domain.user.model.UserInfo;
+import chat_server.jds.domain.user.model.*;
 import chat_server.jds.infrastructure.po.UserFriend;
 
 import java.util.List;
@@ -25,4 +24,16 @@ public interface IUserRepository {
     void deleteUserTalk(String userId, String talkId);
 
     void addTalkBoxInfo(String userId, String talkId, Integer talkType);
+
+    void appendChatRecord(ChatRecordInfo chatRecordInfo);
+
+    List<TalkBoxInfo> queryTalkBoxInfoList(String userId);
+
+    List<ChatRecordInfo> queryChatRecordInfoList(String talkId, String userId, Integer talkType);
+
+    List<GroupsInfo> queryUserGroupInfoList(String userId);
+
+    List<UserFriendInfo> queryUserFriendInfoList(String userId);
+
+    List<String> queryUserGroupsIdList(String userId);
 }

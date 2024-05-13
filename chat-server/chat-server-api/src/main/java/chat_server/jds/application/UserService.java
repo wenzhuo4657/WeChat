@@ -38,7 +38,13 @@ public interface UserService {
      * 查询个人用户对话框列表
      *
      * @param userId 个人用户ID
-     * @return 对话框列表
+     * @return 对话框列表，
+     *     private Integer talkType; // 对话框类型；0好友、1群组
+     *     private String talkId;    // 对话框ID(好友ID、群组ID)
+     *     private String talkName;  // 对话框名称
+     *     private String talkHead;  // 对话框头像
+     *     不包含消息内容
+     *
      */
     List<TalkBoxInfo> queryTalkBoxInfoList(String userId);
 

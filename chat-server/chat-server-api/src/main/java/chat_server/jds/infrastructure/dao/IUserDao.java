@@ -13,4 +13,6 @@ public interface IUserDao {
     User selectUserById(String userId);
 
     List<User> queryFuzzyUserList(String userId, String searchKey);
+
+    User queryUserById(String userId);
 }

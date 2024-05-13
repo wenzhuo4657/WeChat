@@ -2,6 +2,7 @@ package chat_client.ids.event;
 
 import agreement.server_api.protocol.common.friend.AddFriendRequest;
 import agreement.server_api.protocol.common.friend.SearchFriendRequest;
+import agreement.server_api.protocol.common.msg.MsgRequest;
 import agreement.server_api.protocol.common.talk.DelTalkRequest;
 import agreement.server_api.protocol.common.talk.TalkNoticeRequest;
 import chat_client.ids.Enum.CommonField;
@@ -28,6 +29,12 @@ public class ChatEvent implements IChatEvent {
 
     @Override
     public void doSendMsg(String userId, String talkId, Integer talkType, String msg, Integer msgType, Date msgDate) {
+        Channel channel = BeanUtil.getBean("channel", Channel.class);
+        // 好友0
+        if (0 == talkType) {
+            channel.writeAndFlush(new MsgRequest(userId, talkId, msg, msgType, msgDate));
+        }
+
 
     }
 

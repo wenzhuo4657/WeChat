@@ -9,6 +9,8 @@ import agreement.server_api.protocol.common.friend.AddFriendRequest;
 import agreement.server_api.protocol.common.friend.AddFriendResponse;
 import agreement.server_api.protocol.common.friend.SearchFriendRequest;
 import agreement.server_api.protocol.common.friend.SearchFriendResponse;
+import agreement.server_api.protocol.common.msg.MsgRequest;
+import agreement.server_api.protocol.common.msg.MsgResponse;
 import agreement.server_api.protocol.common.talk.DelTalkRequest;
 import agreement.server_api.protocol.common.talk.TalkNoticeRequest;
 import agreement.server_api.protocol.common.talk.TalkNoticeResponse;
@@ -40,6 +42,8 @@ public abstract class Packet {
         packetType.put(Command.DelTalkRequest, DelTalkRequest.class);
         packetType.put(Command.TalkNoticeRequest, TalkNoticeRequest.class);
         packetType.put(Command.TalkNoticeResponse, TalkNoticeResponse.class);
+        packetType.put(Command.msgRequest, MsgRequest.class);
+        packetType.put(Command.msgResponse, MsgResponse.class);
     }
 
 
