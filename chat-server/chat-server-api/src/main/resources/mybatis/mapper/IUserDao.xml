@@ -16,4 +16,31 @@
     <select id="queryUserById" resultType="chat_server.jds.infrastructure.po.User">
         select userId, userNickName, userHead from user where userId = #{userId}
     </select>
+    <select id="queryChannelUserCount" resultType="java.lang.Long">
+        select count(id)
+        from user
+        <where>
+        <if test="null!=userId">
+        and userId=#{userId}
+        </if>
+        <if test="null!=userNickName">
+            and userNickName like "%"#{userNickName}"%"
+        </if>
+        </where>
+
+    </select>
+    <select id="queryChannelUserList" resultType="chat_server.jds.infrastructure.po.User">
+        select userId, userNickName, userHead
+        from user
+        <where>
+            <if test="null != userId">
+                and userId = #{userId}
+            </if>
+            <if test="null != userNickName">
+                and userNickName like "%"#{userNickName}"%"
+            </if>
+        </where>
+        order by id desc
+        limit #{pageStart},#{pageEnd}
+    </select>
 </mapper>
